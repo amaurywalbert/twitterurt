@@ -1,6 +1,6 @@
 # -*- coding: latin1 -*-
 ################################################################################################
-# Script para coletar a profile dos usuarios que interagiram com os presidenciaveis durante a campanha eleitoral.
+# Script para coletar a timeline dos usuarios que interagiram com os presidenciaveis durante a campanha eleitoral.
 #	
 #
 import tweepy, datetime, sys, json, os, os.path, shutil, time, struct, random
@@ -10,7 +10,7 @@ sys.setdefaultencoding('utf-8')
 
 
 ######################################################################################################################################################################
-##		Status - Versao 1.0 - Coletar perfil dos usuarios especificados por cada candidato... esperando o período das janelas.##
+##		Status - Versao 1.0 - Coletar timeline dos usuarios especificados usando o Tweepy para controlar as autenticacoes ##
 ######################################################################################################################################################################
 
 ######################################################################################################################################################################
@@ -28,21 +28,24 @@ class DateTimeEncoder(json.JSONEncoder):
 
 ######################################################################################################################################################################
 #
-# Tweepy - Realiza a busca e devolve a perfil de um usuario especifico
+# Tweepy - Realiza a busca e devolve a timeline de um usuario especifico
 #
 ######################################################################################################################################################################
-def get_profile(user):												#Coleta do Perfil
+def get_timeline(user):												#Coleta da timeline
 	global dictionary
 	global api
 	global i
+	timeline = []
 	try:
-		profile = api.get_user(id=user,wait_on_rate_limit_notify=True,wait_on_rate_limit=True)
-		return (profile)
+		for page in tweepy.Cursor(api.user_timeline,id=user,count=200,wait_on_rate_limit_notify=True,wait_on_rate_limit=True).pages(16):	#Retorna os ultimos 3200 tweets (16*20)
+			for tweet in page:
+				timeline.append(tweet)
+		return (timeline)
 
 	except tweepy.error.TweepError as e:
 		agora = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')				# Recupera o instante atual na forma AnoMesDiaHoraMinuto
 		error = {}
-		with open(error_dir+"timeline_collect.err", "a+") as outfile:								# Abre o arquivo para gravacao no final do arquivo
+		with open(error_dir+"timeline_collect.err", "a+") as outfile:							# Abre o arquivo para gravacao no final do arquivo
 			if e.message:
 				error = {'user':user,'reason': e.message,'date':agora}
 				outfile.write(json.dumps(error, cls=DateTimeEncoder, separators=(',', ':'))+"\n")
@@ -62,7 +65,7 @@ def get_profile(user):												#Coleta do Perfil
 		
 		try:
 			if e.message == 'Not authorized.': # Usuarios nao autorizados
-				dictionary[user] = user										# Insere o usuário coletado na tabela
+				dictionary[user] = user										# Insere o usuario coletado na tabela
 				with open(data_dir+str(user)+".json", "w") as f:			# Cria arquivo vazio
 					print ("Usuario nao autoriza coleta. User: "+str(user)+" - Arquivo criado com sucesso!")
 				i +=1	
@@ -70,29 +73,33 @@ def get_profile(user):												#Coleta do Perfil
 			print ("E3: "+str(e3))
 ######################################################################################################################################################################
 #
-# Obtem perfil dos usuarios
+# Obtem timeline dos usuarios
 #
 ######################################################################################################################################################################
-def save_profile(j,l,user): # j = numero do usuario que esta sendo coletado
+def save_timeline(j,l,user): # j = numero do usuario que esta sendo coletado
 	global i	# numero de usuarios com arquivos ja coletados / Numero de arquivos no diretorio
 	 
 	# Dicionario - Tabela Hash contendo os usuarios ja coletados
 	global dictionary
 
-	#Chama a funcao e recebe como retorno o perfil do usuário
-	profile = get_profile(user)
-	if profile:
+	#Chama a funcao e recebe como retorno a lista de tweets do usuario
+	timeline = get_timeline(user)
+	if timeline:	
 		try:
 			with open(data_dir+str(user)+".json", "w") as f:
-				f.write(json.dumps(profile._json)+"\n")		# ... no arquivo, imprime o perfil completo.
+				k=0
+				for tweet in timeline:
+					k+=1
+					f.write(json.dumps(tweet._json)+"\n")		# ... no arquivo, imprime o tweet (status) inteiro.
+			
 			dictionary[user] = user									# Insere o usuario coletado na tabela em memoria
 			i +=1
-			print ("Total: "+str(i)+" - "+str(candidate)+": "+str(j)+"/"+str(l)+": "+str(user))
-
-		except Exception as e:
-			agora = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')				# Recupera o instante atual na forma AnoMesDiaHoraMinuto
-			with open(error_dir+"timeline_collect.err", "a+") as outfile:								# Abre o arquivo para gravacao no final do arquivo
-				if e.message:
+			print ("Total: "+str(i)+" - "+str(candidate)+": "+str(j)+"/"+str(l)+": "+str(user)+" - "+str(k)+" tweets")
+	
+		except Exception as e:	
+			agora = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')			# Recupera o instante atual na forma AnoMesDiaHoraMinuto
+			with open(error_dir+"timeline_collect.err", "a+") as outfile:						# Abre o arquivo para gravacao no final do arquivo
+				if e.message:		
 					error = {'user':user,'reason': e.message,'date':agora}
 				else:
 					error = {'user':user,'reason': str(e),'date':agora}
@@ -121,7 +128,7 @@ def main():
 				user = long(user)
 				j+=1
 				if not dictionary.has_key(user):
-					save_profile(j,l,user)						#Inicia funcao de busca da timeline
+					save_timeline(j,l,user)						#Inicia funcao de busca da timeline
 	print("######################################################################")
 	print(str(candidate)+" - Coleta finalizada!")
 	print("######################################################################\n")
@@ -135,16 +142,14 @@ def main():
 ################################### CONFIGURAR AS LINHAS A SEGUIR ####################################################
 ######################################################################################################################
 ################################### CHAVE E AUTENTICAÇÃO
-#     Conta: msc20160012_app02 - user: msc2016002_app2 - e-mail: twitter02msc20160012@gmail.com - senha: padrão
+#		Conta: msc2016001247 - user: msc2016001247 - e-mail: twitter47msc20160012@yahoo.com - senha: padrão cel 64 9 9215-0461
+#msc20160012_47_test - Marina
+consumer_key = "gOa37Y85DcbM2Oi3IpvvFWMj9"
+consumer_secret = "Fh334ZT5fXKDTS8zGJR1N6RU3kDdLKhEAk2ZB97iKydCUCaMQp"
+access_token = "849270909034692608-YPMJReaqxI6oVdP7RQ2cfqJinlghtuD"
+access_token_secret = "A6g4aVqq17gAzNPmxsDFIPUo9PVb546JlGw0gK3agWgiM"
+candidate = "marina"
 #
-#
-# msc20160012_11 - Alvaro
-consumer_key = "O4t25YPnHGNm7B1i5qaN7Gu3s"
-consumer_secret = "v298502i9HF2vpFbpOwrvEnYIucp2CVwLU8MPfy2lLGh6AoFXR"
-access_token = "813460676475842560-gX5XA6C8kWOk412pFQOMy4HZgJ9fSMi"
-access_token_secret = "VLO9eKX8TQhKjH3VPoR2asgxZ9qudY3NW5XFUhXg7iJQB"
-#
-candidate = "alvaro"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
@@ -152,12 +157,12 @@ api = tweepy.API(auth)
 ####################  ARMAZENAMENTO DOS DADOS ###############################################################
 #############################################################################################################
 source_dir = "/home/twitterurt/ProjetoEleicao/data_id/"
-data_dir = "/home/twitterurt/ProjetoEleicao/profile/json/" ####### Diretorio para armazenamento dos arquivos JSON
-error_dir = "/home/twitterurt/ProjetoEleicao/profile/error/" ##### Diretorio para armazenamento dos arquivos de erro
+data_dir = "/home/twitterurt/ProjetoEleicao/timeline/json/"  ####### Diretorio para armazenamento dos arquivos JSON
+error_dir = "/home/twitterurt/ProjetoEleicao/timeline/error/"  ##### Diretorio para armazenamento dos arquivos de erro
 
 ######################################################################################################################
 ######################################################################################################################
-#Cria os diretorios para armazenamento dos arquivos
+# Cria os diretorios para armazenamento dos arquivos
 if not os.path.exists(data_dir):
 	os.makedirs(data_dir)
 if not os.path.exists(error_dir):
@@ -166,16 +171,16 @@ if not os.path.exists(error_dir):
 ###### Iniciando dicionario - tabela hash a partir dos arquivos ja criados.
 print
 print("######################################################################")
-print ("Criando tabela hash...")
-dictionary = {}	#################################################### Tabela {chave:valor} para facilitar a consulta dos usuários já coletados
-i = 0	#Conta quantos usuarios ja foram coletados (todos arquivos no diretorio)
+print("Criando tabela hash...")
+dictionary = {}  #################################################### Tabela {chave:valor} para facilitar a consulta dos usuários já coletados
+i = 0  # Conta quantos usuarios ja foram coletados (todos arquivos no diretorio)
 for file in os.listdir(data_dir):
 	user_id = file.split(".json")
 	user_id = long(user_id[0])
 	dictionary[user_id] = user_id
-	i+=1
-print ("Tabela hash criada com sucesso...") 
+	i += 1
+print("Tabela hash criada com sucesso...")
 print("######################################################################\n")
-	
-#Executa o metodo main
+
+# Executa o metodo main
 if __name__ == "__main__": main()
