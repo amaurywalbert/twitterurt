@@ -7,19 +7,19 @@ while true; do
 		echo "Executando"
 	else
 		echo "Iniciando..."
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/alvaro_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/amoedo_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/bolsonaro1turno_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/bolsonaro_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/boulos_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/ciro_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/daciolo_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/eymael_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/geraldo_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/haddad1turno_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/haddad_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/henrique_profile_collect_wait_v1.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/amaury/twitterurt/coleta/profile/marina_profile_collect_wait_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/alvaro_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/amoedo_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/bolsonaro1turno_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/bolsonaro_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/boulos_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/ciro_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/daciolo_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/eymael_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/geraldo_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/haddad1turno_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/haddad_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/henrique_v1.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/marina_v1.py; exec $SHELL";
 	fi
 	sleep $INTERVALO
 done
