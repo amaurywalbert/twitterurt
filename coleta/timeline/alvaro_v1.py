@@ -117,7 +117,6 @@ def save_timeline(j,l,user): # j = numero do usuario que esta sendo coletado
 ######################################################################################################################################################################
 
 def main():
-	global i 												# Numero de usuarios com arquivos ja coletados / Numero de arquivos no diretorio													# Exibe o numero ordinal do usuário que esta sendo usado para a coleta da timeline
 	for file in os.listdir(source_dir+candidate):
 		with open(source_dir+candidate+"/"+file, "r") as f:
 			users_id = f.readlines()
