@@ -87,7 +87,7 @@ def save_profile(j,l,user): # j = numero do usuario que esta sendo coletado
 				f.write(json.dumps(profile._json)+"\n")		# ... no arquivo, imprime o perfil completo.
 			dictionary[user] = user									# Insere o usuario coletado na tabela em memoria
 			i +=1
-			print ("Total: "+str(i)+" - "+str(candidate)+": "+str(j)+"/"+str(l)+": "+str(user))
+			print ("Profile - Total: "+str(i)+" - "+str(candidate)+": "+str(j)+"/"+str(l)+": "+str(user))
 
 		except Exception as e:
 			agora = datetime.datetime.strftime(datetime.datetime.now(), '%Y%m%d%H%M')				# Recupera o instante atual na forma AnoMesDiaHoraMinuto
