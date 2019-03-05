@@ -5,12 +5,13 @@ TIMELINE="/home/twitterurt/ProjetoEleicao/timeline/json/"
 FRIENDS="/home/twitterurt/ProjetoEleicao/friends/json/"
 FOLLOWERS="/home/twitterurt/ProjetoEleicao/followers/json/"
 
-
+i=0
 for _origin in $PROFILE*; do
-	if [ -s $_origin ]; then
-		echo "$_origin has some data."
-	else
+	if ! [ -s $_origin ]; then
 		cp -rf $_origin $TIMELINE; cp -rf $_origin $FRIENDS; cp -rf $_origin $FOLLOWERS;
+		i=$((i+1))
+		echo "$_origin copiado com sucesso! $i"
+		
 	fi
 done
 
