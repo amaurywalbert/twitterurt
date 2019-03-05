@@ -76,7 +76,7 @@ def main():
 				if not os.path.isfile(data_dir + str(user) + ".json"):
 					save_data(j,l,user)  # Inicia funcao de busca dos dados
 				else:
-					print("Usuario ja coletado! Seguindo...")
+					print("Usuario ja coletado! "+str(coleta)+" - "+str(candidate)+": "+str(j)+"/"+str(l)+": "+str(user)+" - Seguindo...")
 		print("######################################################################")
 		print(str(candidate) + " - Coleta finalizada!")
 		print("######################################################################\n")
