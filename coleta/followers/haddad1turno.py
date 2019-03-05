@@ -19,7 +19,7 @@ sys.setdefaultencoding('utf-8')
 def get_data(user):
 	try:
 		followers_list = []
-		for page in tweepy.Cursor(api.followers,id=user).pages():
+		for page in tweepy.Cursor(api.followers_ids,id=user).pages():
 			for follower in page:
 				followers_list.append(follower)
 		return (followers_list)
