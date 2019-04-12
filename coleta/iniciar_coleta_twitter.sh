@@ -24,19 +24,19 @@ while true; do
 # OK		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/marina.py; exec $SHELL";
 
 # Timeline
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/alvaro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/amoedo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/bolsonaro1turno.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/bolsonaro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/boulos.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/ciro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/daciolo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/eymael.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/geraldo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/haddad1turno.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/haddad.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/henrique.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/marina.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/alvaro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/amoedo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/bolsonaro1turno.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/bolsonaro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/boulos.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/ciro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/daciolo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/eymael.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/geraldo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/haddad1turno.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/haddad.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/henrique.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/marina.py; exec $SHELL";
 
 # Friends
 		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/alvaro.py; exec $SHELL";
