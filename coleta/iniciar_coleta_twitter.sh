@@ -23,7 +23,7 @@ while true; do
 # OK		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/henrique.py; exec $SHELL";
 # OK		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/profile/marina.py; exec $SHELL";
 
-# Timeline
+# Timeline - Precisa rever a coleta, temos que salvar apenas alguns dados e no toda a timeline. Problemas com espaço em disco...
 #		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/alvaro.py; exec $SHELL";
 #		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/amoedo.py; exec $SHELL";
 #		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/bolsonaro1turno.py; exec $SHELL";
@@ -38,20 +38,21 @@ while true; do
 #		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/henrique.py; exec $SHELL";
 #		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/timeline/marina.py; exec $SHELL";
 
-# Friends
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/alvaro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/amoedo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/bolsonaro1turno.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/bolsonaro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/boulos.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/ciro.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/daciolo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/eymael.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/geraldo.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/haddad1turno.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/haddad.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/henrique.py; exec $SHELL";
-		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/marina.py; exec $SHELL";
+# Friends - Fazendo um teste com o script "todos.py" em substituição a scripts de coleta por candidato individual.
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/alvaro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/amoedo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/bolsonaro1turno.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/bolsonaro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/boulos.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/ciro.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/daciolo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/eymael.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/geraldo.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/haddad1turno.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/haddad.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/henrique.py; exec $SHELL";
+#		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/marina.py; exec $SHELL";
+		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/friends/todos.py; exec $SHELL";
 
 # Followers
 		gnome-terminal -x bash -c "python /home/twitterurt/twitterurt/coleta/followers/alvaro.py; exec $SHELL";
